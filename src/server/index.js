@@ -4,11 +4,11 @@ const PORT_NUMBER = 8888;
 const app = Express();
 
 
-app.use(Express.static('./public'))
+app.use(Express.static('./public'));
 
 app.get('/welcome', (_, res) => {
   res.status(200);
-  res.send("first DevOps project");
+  res.send('first DevOps project');
 });
 
 
