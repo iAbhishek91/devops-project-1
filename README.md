@@ -12,25 +12,25 @@ To Run it in local, follow the below steps
 
 v13.10.0
 
-## Install Dependencies
+### Install Dependencies
 
 ```sh
 yarn
 ```
 
-## Build the project
+### Build the project
 
 ```sh
 yarn build
 ```
 
-## Start the application
+### Start the application
 
 ```sh
 yarn start
 ```
 
-## Validate the application from browser
+### Validate the application from browser
 
 http://localhost:8888
 
@@ -47,4 +47,5 @@ docker build -t devops-project-1:1.0.0 .
 ### Run the image
 
 ```sh
+docker run -d devops-project-1:1.0.0 -p 8888:8888
 ```
