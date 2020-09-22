@@ -14,8 +14,22 @@ v13.10.0
 
 ## Install Dependencies
 
+```sh
 yarn
+```
 
 ## Build the project
 
+```sh
 yarn build
+```
+
+## Start the application
+
+```sh
+yarn start
+```
+
+## Validate the application from browser
+
+http://localhost:8888
