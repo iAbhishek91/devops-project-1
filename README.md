@@ -33,3 +33,18 @@ yarn start
 ## Validate the application from browser
 
 http://localhost:8888
+
+## Docker
+
+Multistage docker file to create a slim image for the service
+
+### Build the image
+
+```sh
+docker build -t devops-project-1:1.0.0 .
+```
+
+### Run the image
+
+```sh
+```
