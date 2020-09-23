@@ -49,3 +49,14 @@ docker build -t devops-project-1:1.0.0 .
 ```sh
 docker run -d devops-project-1:1.0.0 -p 8888:8888
 ```
+
+## GitHub Actions
+
+Tracked under .github/workflow folder.
+
+There are two workflow defined triggered:
+
+- **push to master** named ci.yaml (build and test the application)
+- **pull_request to master** named cd.yaml (packages the artifact and upload in nexus, perform image bakery process upload the image in GCR and deploy that in GKE)
+
+> Master branch is locked so that there is no direct push to master.
