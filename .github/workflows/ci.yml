@@ -2,17 +2,13 @@ name: CI
 
 
 on:
-  push:
-    branches:
-    - master
-
   pull_request:
     branches:
     - master
 
 
 jobs:
-  test_and_build:
+  test:
     name: build and test lint
     
     runs-on: ubuntu-18.04
@@ -34,5 +30,3 @@ jobs:
       run: yarn
     - name: Check lint
       run: yarn test:lint
-    - name: Build
-      run: yarn build
