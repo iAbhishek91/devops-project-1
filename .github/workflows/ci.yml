@@ -13,20 +13,29 @@ jobs:
     
     runs-on: ubuntu-18.04
 
+    # mentioning the environments to execute the build
     strategy:
       matrix:
         node: [13.x, 14.x]
     
     steps:
+
+    # defined actions for cloning the git repository
     - name: Checkout
       uses: actions/checkout@v2
+
+    # setup node, with makes the workflow to be executed twice as mentioned in the strategy.
     - name: Use NodeJS Version - ${{ matrix.node }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
+
     - name: Install yarn
       run: npm i yarn -g
+
     - name: Install dependencies
       run: yarn
+
+    # eslint test to validate the static code analysis.
     - name: Check lint
       run: yarn test:lint

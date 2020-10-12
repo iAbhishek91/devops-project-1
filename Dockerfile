@@ -41,7 +41,7 @@ COPY --from=dependencies /root/devops/prod_node_modules ./node_modules
 # copy public and server from build file
 COPY --from=build /root/devops/public ./public
 COPY --from=build /root/devops/server.js ./server.js
-# expose the port 8888
-EXPOSE 8888
+# expose the port 8080
+EXPOSE 8080
 # start the app server process
 ENTRYPOINT yarn start
