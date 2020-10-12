@@ -50,7 +50,9 @@ docker build -t devops-project-1:1.0.0 .
 docker run -d devops-project-1:1.0.0 -p 8080:8080
 ```
 
-## GitHub Actions
+## Google configuration ***** to RUN IN GCP ******
+
+### GitHub configuration
 
 > No configuration required in github for executing the actions. Creation of .github/workflow directory will trigger the actions automatically.
 Tracked under **.github/workflow** folder.
@@ -60,14 +62,20 @@ There are TWO WORKFLOW DEFINED:
 - triggered when **PUSH TO MASTER** named ci.yaml (test the application)
 - triggered when **PULL_REQUEST TO MASTER** named cd.yaml (build the image and pushes to gcr.io registry)
 
-> Master branch is locked so that there is no direct push to master.
+#### Master branch settings
 
-### Create secrets in GitHuB
+- enable peer review *this is NOT DONE in this project as I am only contributor*
+- enable git actions CI as required before merging.
+- force all the rules for admin and owners
+
+> This will lock the master branch and one can merge only after the actions are passed.
+
+#### Create secrets in GitHuB
 
 GKE_PROJECT: PROJECT_ID
 GKE_SA_KEY: {} # get the key from IAM manager
 
-## Set up GCP
+### Set up GCP
 
 Below commands are executed on cloud shell
 
