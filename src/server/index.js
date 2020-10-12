@@ -1,6 +1,6 @@
 import Express from 'express';
 
-const PORT_NUMBER = 8888;
+const PORT_NUMBER = 8080;
 const app = Express();
 
 

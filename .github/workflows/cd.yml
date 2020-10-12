@@ -27,24 +27,31 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
+    # this is a was environment variables are configured
+    # the version is extracted from package.json and used to tag the image
     - name: fetch the version of the application
       run: |
         ./fetchVersionAsEnvVar.sh >> $GITHUB_ENV
     
+    # configure gcloud, refer README.md how to setup the secrets
     - name: Setup gcloud CLI
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.3
       with:
         service_account_key: ${{ secrets.GKE_SA_KEY }}
         project_id: ${{ secrets.GKE_PROJECT }}
 
+    # auth to google docker registry, its similar to docker login
     - name: Auth google container registry 
       run: gcloud --quiet auth configure-docker
 
+    # setup KUBECONFIG file, hence we can use kubectl to perform anything on the cluster.
     - name: Setup kubectl CLI by fetching GKE credentials
       run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
+    # Tag and Build the image
     - name: build image
       run: docker build -t gcr.io/$PROJECT_ID/devops-project-1:$VERSION .
 
+    # Upload the image to google container registry
     - name: push the image
       run: docker push  gcr.io/$PROJECT_ID/devops-project-1:$VERSION
