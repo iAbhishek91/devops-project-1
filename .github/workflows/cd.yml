@@ -11,7 +11,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: sandbox
   GKE_ZONE: europe-west2-c
-  DEPLOYMENT_NAME: node-app
+  DEPLOYMENT_NAME: devops-project
   IMAGE: static-site
 
 
@@ -55,3 +55,7 @@ jobs:
     # Upload the image to google container registry
     - name: push the image
       run: docker push  gcr.io/$PROJECT_ID/devops-project-1:$VERSION
+
+    # deploy the application using helm
+    - name: helm install
+      run: helm install $DEPLOYMENT_NAME ./helm-chart
